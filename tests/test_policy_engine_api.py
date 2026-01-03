@@ -36,9 +36,8 @@ def test_api_negative_missing_job():
 
 # @pytest.mark.skip(reason="Example  for passed ,test VS implemented API server")
 def test_api_post_vs_implemented_api():
-    url_base = 'https://petstore.swagger.io/v2/'
-    headers = {'Content-Type': 'application/json'}
-    user = {
+    url_base_pet_store = 'https://petstore.swagger.io/v2'
+    user_pet_store = {
         "id": 3333,
         "username": "user1",
         "firstName": "John",
@@ -48,7 +47,7 @@ def test_api_post_vs_implemented_api():
         "phone": "054123456",
         "userStatus": 0
     }
-    response = requests.post(url_base + 'user', headers=headers, data=json.dumps(user))
+    response = requests.post(url_base_pet_store + '/user', headers=HEADERS, data=json.dumps(user_pet_store))
     response_code = response.status_code
     assert response_code == 200
     message = response.json()["message"]
